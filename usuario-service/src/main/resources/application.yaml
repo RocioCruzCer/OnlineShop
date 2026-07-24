@@ -13,8 +13,3 @@ spring:
     hibernate:
       ddl-auto: update
     show-sql: true
-
-eureka:
-  client:
-    service-url:
-      defaultZone: https://shimmering-amazement-production-39a5.up.railway.app/eureka/

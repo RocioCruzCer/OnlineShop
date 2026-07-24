@@ -5,16 +5,11 @@ spring:
   application:
     name: carrito-service
   datasource:
-    url: jdbc:mysql://localhost:3306/onlineshop?useSSL=false&serverTimezone=UTC
+    url: jdbc:mysql://mysql.railway.internal:3306/railway?useSSL=false&serverTimezone=UTC
     username: root
-    password: 1234567890
+    password: isPtxkpfTWzPFOFQDfkFFuVTdLXHPsmm
     driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
     hibernate:
       ddl-auto: update
     show-sql: true
-
-eureka:
-  client:
-    service-url:
-      defaultZone: [https://shimmering-amazement-production-39a5.up.railway.app/eureka/](https://shimmering-amazement-production-39a5.up.railway.app/eureka/)

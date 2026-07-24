@@ -1,5 +1,5 @@
 server:
-  port: 8082 # <-- Puerto diferente para que no choque con usuarios
+  port: 8082
 
 spring:
   application:
@@ -13,8 +13,3 @@ spring:
     hibernate:
       ddl-auto: update
     show-sql: true
-
-eureka:
-  client:
-    service-url:
-      defaultZone: https://shimmering-amazement-production-39a5.up.railway.app/eureka/

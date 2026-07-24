@@ -6,30 +6,23 @@ spring:
     name: api-gateway
   cloud:
     gateway:
-      server:
-        webmvc:
-          routes:
-            - id: usuario-service
-              uri: lb://USUARIO-SERVICE
-              predicates:
-                - Path=/api/usuarios,/api/usuarios/**
+      routes:
+        - id: usuario-service
+          uri: http://usuario-service.railway.internal:8081
+          predicates:
+            - Path=/usuarios/**
 
-            - id: producto-service
-              uri: lb://PRODUCTO-SERVICE
-              predicates:
-                - Path=/api/productos,/api/productos/**
+        - id: producto-service
+          uri: http://producto-service.railway.internal:8082
+          predicates:
+            - Path=/productos/**
 
-            - id: carrito-service
-              uri: lb://CARRITO-SERVICE
-              predicates:
-                - Path=/api/carrito,/api/carrito/**
+        - id: pedido-service
+          uri: http://pedido-service.railway.internal:8083
+          predicates:
+            - Path=/pedidos/**
 
-            - id: pedido-service
-              uri: lb://PEDIDO-SERVICE
-              predicates:
-                - Path=/api/pedidos,/api/pedidos/**
-
-eureka:
-  client:
-    service-url:
-      defaultZone: https://shimmering-amazement-production-39a5.up.railway.app/eureka/
+        - id: carrito-service
+          uri: http://carrito-service.railway.internal:8084
+          predicates:
+            - Path=/carritos/**
