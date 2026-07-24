@@ -5,9 +5,9 @@ spring:
   application:
     name: producto-service
   datasource:
-    url: jdbc:mysql://localhost:3306/onlineshop?useSSL=false&serverTimezone=UTC
+    url: jdbc:mysql://mysql.railway.internal:3306/railway?useSSL=false&serverTimezone=UTC
     username: root
-    password: 1234567890 # Pon la misma contraseña de la vez pasada
+    password: isPtxkpfTWzPFOFQDfkFFuVTdLXHPsmm
     driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
     hibernate:

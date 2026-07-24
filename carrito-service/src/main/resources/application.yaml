@@ -17,4 +17,4 @@ spring:
 eureka:
   client:
     service-url:
-      defaultZone: https://shimmering-amazement-production-39a5.up.railway.app/eureka/
+      defaultZone: [https://shimmering-amazement-production-39a5.up.railway.app/eureka/](https://shimmering-amazement-production-39a5.up.railway.app/eureka/)
