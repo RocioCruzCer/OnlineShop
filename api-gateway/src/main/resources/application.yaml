@@ -1,0 +1,35 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: api-gateway
+  cloud:
+    gateway:
+      server:
+        webmvc:
+          routes:
+            - id: usuario-service
+              uri: lb://USUARIO-SERVICE
+              predicates:
+                - Path=/api/usuarios,/api/usuarios/**
+
+            - id: producto-service
+              uri: lb://PRODUCTO-SERVICE
+              predicates:
+                - Path=/api/productos,/api/productos/**
+
+            - id: carrito-service
+              uri: lb://CARRITO-SERVICE
+              predicates:
+                - Path=/api/carrito,/api/carrito/**
+
+            - id: pedido-service
+              uri: lb://PEDIDO-SERVICE
+              predicates:
+                - Path=/api/pedidos,/api/pedidos/**
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
