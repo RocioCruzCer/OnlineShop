@@ -1,13 +1,13 @@
 server:
-  port: 8082 # <-- Puerto diferente para que no choque con usuarios
+  port: 8082
 
 spring:
   application:
     name: producto-service
   datasource:
-    url: jdbc:mysql://localhost:3306/onlineshop?useSSL=false&serverTimezone=UTC
-    username: root
-    password: 1234567890 # Pon la misma contraseña de la vez pasada
+    url: jdbc:mysql://${MYSQLHOST}:${MYSQLPORT}/${MYSQLDATABASE:onlineshop}?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+    username: ${MYSQLUSER}
+    password: ${MYSQLPASSWORD}
     driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
     hibernate:
@@ -17,4 +17,4 @@ spring:
 eureka:
   client:
     service-url:
-      defaultZone: http://localhost:8761/eureka/
+      defaultZone: ${EUREKA_URL:http://localhost:8761/eureka/}
