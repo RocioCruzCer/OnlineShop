@@ -3,6 +3,8 @@ package com.onlineshop.pedido.service;
 import com.onlineshop.pedido.entity.Pedido;
 import com.onlineshop.pedido.entity.PedidoDetalle;
 import com.onlineshop.pedido.repository.PedidoRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
@@ -16,6 +18,8 @@ import java.util.Map;
 
 @Service
 public class PedidoService {
+
+    private static final Logger log = LoggerFactory.getLogger(PedidoService.class);
 
     @Autowired
     private PedidoRepository pedidoRepository;
@@ -39,6 +43,8 @@ public class PedidoService {
                         Map.class
                     );
                 } catch (Exception e) {
+                    log.error("Error al obtener producto con id {} desde URL {}/api/productos/{}: {}",
+                        detalle.getProductoId(), productoServiceUrl, detalle.getProductoId(), e.getMessage());
                     throw new RuntimeException("No se pudo obtener el producto con id: " + detalle.getProductoId());
                 }
 
