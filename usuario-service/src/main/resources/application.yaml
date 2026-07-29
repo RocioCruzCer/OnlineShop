@@ -5,11 +5,16 @@ spring:
   application:
     name: usuario-service
   datasource:
-    url: jdbc:mysql://mysql.railway.internal:3306/railway?useSSL=false&serverTimezone=UTC
+    url: jdbc:mysql://localhost:3306/onlineshop?useSSL=false&serverTimezone=UTC
     username: root
-    password: isPtxkpfTWzPFOFQDfkFFuVTdLXHPsmm
+    password: 1234567890
     driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
     hibernate:
       ddl-auto: update
     show-sql: true
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
