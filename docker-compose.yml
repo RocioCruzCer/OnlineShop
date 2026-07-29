@@ -87,7 +87,9 @@ services:
       SPRING_DATASOURCE_USERNAME: root
       SPRING_DATASOURCE_PASSWORD: root
       SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT: org.hibernate.dialect.MySQLDialect
-      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://eureka-server:8761/eureka/
+      EUREKA_URL: http://eureka-server:8761/eureka/
+      PRODUCTO_SERVICE_URL: http://producto-service:8082
+      EUREKA_CLIENT_ENABLED: "true"
     depends_on:
       - mysql-db
       - eureka-server

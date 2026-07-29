@@ -14,6 +14,11 @@ spring:
       ddl-auto: update
     show-sql: true
 
+producto-service:
+  url: ${PRODUCTO_SERVICE_URL:https://producto-service-production-a90b.up.railway.app}
+
 eureka:
   client:
     enabled: false
+    service-url:
+      defaultZone: ${EUREKA_URL:http://localhost:8761/eureka/}

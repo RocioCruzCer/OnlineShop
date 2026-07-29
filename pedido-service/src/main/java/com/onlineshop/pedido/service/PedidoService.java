@@ -4,11 +4,10 @@ import com.onlineshop.pedido.entity.Pedido;
 import com.onlineshop.pedido.entity.PedidoDetalle;
 import com.onlineshop.pedido.repository.PedidoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
 
 import java.time.LocalDateTime;
@@ -24,6 +23,9 @@ public class PedidoService {
     @Autowired
     private RestTemplate restTemplate;
 
+    @Value("${producto-service.url}")
+    private String productoServiceUrl;
+
     @SuppressWarnings("unchecked")
     public Pedido crearPedido(Pedido pedido) {
         if (pedido.getDetalles() != null) {
@@ -33,7 +35,7 @@ public class PedidoService {
                 Map<String, Object> producto;
                 try {
                     producto = restTemplate.getForObject(
-                        "http://producto-service/api/productos/" + detalle.getProductoId(),
+                        productoServiceUrl + "/api/productos/" + detalle.getProductoId(),
                         Map.class
                     );
                 } catch (Exception e) {
@@ -52,7 +54,7 @@ public class PedidoService {
 
                 try {
                     restTemplate.exchange(
-                        "http://producto-service/api/productos/" + detalle.getProductoId() + "/stock",
+                        productoServiceUrl + "/api/productos/" + detalle.getProductoId() + "/stock",
                         HttpMethod.PUT,
                         new HttpEntity<>(Map.of("cantidad", -detalle.getCantidad())),
                         Object.class

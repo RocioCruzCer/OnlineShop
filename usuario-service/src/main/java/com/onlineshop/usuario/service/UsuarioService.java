@@ -27,4 +27,13 @@ public class UsuarioService {
         return usuarioRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Usuario no encontrado con id: " + id));
     }
+
+    public Usuario autenticar(String username, String password) {
+        Usuario usuario = usuarioRepository.findByUsername(username)
+                .orElseThrow(() -> new RuntimeException("Usuario no encontrado: " + username));
+        if (!usuario.getPassword().equals(password)) {
+            throw new RuntimeException("Contrasena incorrecta");
+        }
+        return usuario;
+    }
 }
